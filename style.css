@@ -1,0 +1,30 @@
+.Tic-tac-toe {
+    width: 366px;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+.Tic-tac-toe .cell {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #828282;
+    cursor: pointer;
+    float: left;
+    text-align: center;
+    font-size: 100px;
+    line-height: 110px;
+}
+
+input {
+    margin-top: 10px;
+    margin-left: 130px;
+    background-color: #008CBA;
+    font-size: 20px;
+    border-radius: 8px;
+    border: 3px solid #DBDBDB;
+}
+
+.result {
+    margin-left: 130px;
+    font-size: 20px;
+}

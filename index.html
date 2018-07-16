@@ -2,98 +2,14 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Krestiki Noliki</title>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-			<style>
-				.krestiki_noliki{
-					width: 366px;
-					margin: 0 auto;
-					margin-top: 70px;
-				}
-				.krestiki_noliki .cell{
-					width: 120px;
-					height: 120px;
-					border: 1px solid #828282 ;
-					cursor: pointer;
-					float: left;
-					text-align: center;
-					font-size: 100px;
-					line-height: 110px;
-				}
-				input{
-					margin-top: 10px;
-					margin-left: 130px;
-					background-color: #008CBA;
-					font-size: 20px;
-					border-radius: 8px;
-					border: 3px solid #DBDBDB;
-				}
-				.result{
-					margin-left: 130px;
-					font-size: 20px;
-				}
-				
-			</style>
-		<script type="text/javascript">
-			$(document).ready(function(){
-				var znak = "X";
-				var cl_zn = $(".cell"); //перебираем ячейки
-				cl_zn.on("click", function sel(){ //при клике на клетку вызывается функция знака  
-						$(this).text(znak);
-							if(znak=="X") { // меняем знак поочредно
-								znak = "O" 
-								$('.result').text("Ходит O"); // выводит кто ходит
-								 $(this).off("click", sel);  //блокируем выбранную уже ячейку   
-							}
-							else {
-								znak = "X"
-								$('.result').text("Ходит X");	
-								$(this).off("click", sel);
-							}
-				var winner = win(); //записываем в перемнную функцию выигрышных комбинаций
-					if (winner == true ){ //если функция будет истиной , то возвратится функция endGame
-						endGame();
-					}
-					else {	
-					var draw = endDraw();  
-						if(draw){ // если победителя нет, то ничья вызванная функцией EndDraw
-						$('.result').text('Ничья!');
-						}
-					}
-				});	
-				function win(sel){
-					var win_player = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]; //комбинации при победе
-					for ( var  i = 0; i < win_player.length; i++ ) { //перебираем в цикле комбинации и записываем в перемнную
-					var wc = win_player[i];
-						if(cl_zn[wc[0]].innerHTML == cl_zn[wc[1]].innerHTML && cl_zn[wc[1]].innerHTML == cl_zn[wc[2]].innerHTML && cl_zn[wc[0]].innerHTML != "" ) //условие при победе
-						{
-							$('.result').text('Вы выиграли!'); 
-								return true; //возвращаем истину, если есть победитель
-						}
-					}  
-				};
-				function endGame(sel){
-					for ( var  i = 0; i < cl_zn.length; i++ ) { //запрещаем клик по ячейкам
-					    $(cl_zn).off( "click", sel );
-					}
-				};
-				function endDraw(sel){ //перебираем ячейки, если ячейка пустая, то вовращает false, если заняты ячейки то вовращает true
-					for ( var  i = 0; i < cl_zn.length; i++ ) {
-						if (cl_zn[i].innerHTML == "" ){
-							return false;		
-						}
-					}
-							return true;
-				};
-				$( "input" ).on("click", function reset_click() { //начать игру заново(кнопка)
-					location.reload();
-				});		
-			})
-		</script>
+		<title>Tic-tac-toe</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+		<script src='javascript.js'></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 		<body>
-			 <div class="krestiki_noliki">
-				<p class="result">Здраствуйте!</p>
+		<div class="Tic-tac-toe">
+			<p class="result">Hello!</p>
 					</br>
 						<div class="cell 1"></div>
 						<div class="cell 2"></div>
@@ -103,9 +19,9 @@
 						<div class="cell 6"></div>
 						<div class="cell 7"></div>
 						<div class="cell 8"></div>
-						<div class="cell 9"></div>   
+			<div class="cell 9"></div>
 					</br>
-			<input type="reset" value="Начать заново"></input>
+			<input type="reset" value="start afresh"/>
 			</div>
 		</body>
 </html>
